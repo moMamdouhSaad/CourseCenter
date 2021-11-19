@@ -2,7 +2,18 @@
 <div class='container'>
 
 
-    <div  class='d-flex justify-content-end mb-2 mt-5'>
+    <div  class='d-flex justify-content-end align-items-center mb-2 mt-5'>
+
+      
+      <mat-form-field appearance="fill" style="padding-bottom: 0 !important;">
+        <select mat-select matNativeControl (change)="sortByCourse($event)">
+          <option selected disabled>Sort by </option>
+          <option  [value]="'default'">Default</option>
+          <option  [value]="'course'">Course</option>
+        </select>
+      </mat-form-field>
+
+        <div class='mx-3'></div>
 <button  mat-flat-button color="primary"  (click)="addStudent()">Add student</button>
 </div>
 
@@ -42,8 +53,7 @@
             <td mat-cell *matCellDef="let element">
             <button mat-flat-button color="accent" (click)='updateStudent(element)'>Edit</button>   
             <span class='mx-2'></span> 
-            <button mat-flat-button color="warn"  (click)='deleteStudentById(element?.id)'>Delete</button>    
-            
+            <button mat-flat-button color="warn"  (click)='deleteConfirmationDialog(element?.id)'>Delete</button>    
             </td>
           </ng-container>
   

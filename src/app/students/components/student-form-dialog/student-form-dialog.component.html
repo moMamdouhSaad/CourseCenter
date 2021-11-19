@@ -5,21 +5,24 @@
     <div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label> Student Name</mat-label>
-      <input matInput placeholder="Ex. Science" formControlName="name"  value="Science">
+      <input matInput placeholder="Ex. Mohamed" formControlName="name"  value="Mohamed">
     </mat-form-field>
     </div>
 
     <div>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Course id</mat-label>
-          <input matInput placeholder="Ex. Science" formControlName="courseId" >
-        </mat-form-field>
+            <mat-label>Course </mat-label>
+
+            <select matNativeControl formControlName="courseId">
+              <option *ngFor='let course of courses' [value]="course.id">{{course.name}}</option>
+            </select>
+          </mat-form-field>
         </div>
 
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label> Grade</mat-label>
-              <input matInput  formControlName="grade" >
+              <input matInput formControlName="grade" >
             </mat-form-field>
         </div>
   

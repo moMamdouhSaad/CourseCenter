@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CourseInterface } from 'src/app/courses/models/CourseInterface';
+import { CourseService } from 'src/app/courses/services/course.service';
 import { StudentInterface } from '../../models/StudentInterface';
 import { StudentService } from '../../services/student.service';
 
@@ -10,22 +12,27 @@ import { StudentService } from '../../services/student.service';
 })
 export class StudentFormDialogComponent implements OnInit {
   formGroup!:FormGroup;
+  courses!:CourseInterface[]
   constructor(private readonly fb:FormBuilder,private readonly studentService:StudentService, public dialogRef: MatDialogRef<StudentFormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public studentToUpdate: StudentInterface
+    @Inject(MAT_DIALOG_DATA) public studentToUpdate: StudentInterface,
+    private readonly courseService:CourseService
     ) {
     
    }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
+    this.courseService.getAllCourses().subscribe(data=>{
+      this.courses = data
+    })
   }
 
   initForm():void{
    this.formGroup =  this.fb.group({
      id:[this.studentToUpdate?.id  || new Date().getTime(),[Validators.required]],
-     name:[this.studentToUpdate?.name || '',[Validators.required]],
+     name:[this.studentToUpdate?.name || '',[Validators.required,Validators.maxLength(20)]],
      courseId:[this.studentToUpdate?.courseId ||'',[Validators.required]],
-     grade:[this.studentToUpdate?.grade || '',[Validators.required]]
+     grade:[this.studentToUpdate?.grade || '',[Validators.required,Validators.maxLength(40)]]
 
    })
   }
