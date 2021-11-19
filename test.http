@@ -1,0 +1,31 @@
+POST http://localhost:3000/courses HTTP/1.1
+content-type: application/json
+
+{
+    
+        "name":"first", 
+        "createdDate":"date", 
+        "startDate":"Start", 
+        "endDate":"End" 
+}
+
+
+# delete http://localhost:3000/courses/2 HTTP/1.1
+# content-type: application/json
+
+# {
+#         "name":"first", 
+#         "createdDate":"date", 
+#         "startDate":"Start", 
+#         "endDate":"End" 
+# }
+
+# PATCH http://localhost:3000/courses/3 HTTP/1.1
+# content-type: application/json
+
+# {
+#         "name":"updated", 
+#         "createdDate":"date", 
+#         "startDate":"Start", 
+#         "endDate":"End" 
+# }

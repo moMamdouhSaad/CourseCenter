@@ -1,0 +1,30 @@
+{
+  "courses": [
+    {
+      "name": "first",
+      "createdDate": "date",
+      "startDate": "Start",
+      "endDate": "End"
+    },
+    {
+      "id": 1637342404818,
+      "name": "asd",
+      "startDate": "2021-11-10T22:00:00.000Z",
+      "endDate": "2021-11-24T22:00:00.000Z"
+    },
+    {
+      "id": 1637342415954,
+      "name": "asd",
+      "startDate": "2021-11-15T22:00:00.000Z",
+      "endDate": "2021-11-17T22:00:00.000Z"
+    }
+  ],
+  "students": [
+    {
+      "id": 1637343886662,
+      "name": "asdasdasd",
+      "courseId": "asd",
+      "grade": "asd"
+    }
+  ]
+}
