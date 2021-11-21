@@ -1,56 +1,58 @@
-
-<div class='container'>
-
-
-    <div  class='d-flex justify-content-end mb-2 mt-5'>
-<button  mat-flat-button color="primary"  (click)="addCourse()">Add course</button>
-</div>
-
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
-
+<div class="container">
+  <div class="d-flex justify-content-end mb-2 mt-5">
+    <button mat-flat-button color="primary" (click)="addCourse()">
+      Add course
+    </button>
+  </div>
+  {{ isSubmitting$ | async }}
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
+
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
-  
+
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
-  
+
     <!-- Start Date Column -->
     <ng-container matColumnDef="startDate">
-      <th mat-header-cell *matHeaderCellDef> Start Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.startDate | date}} </td>
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.startDate | date }}</td>
     </ng-container>
-  
+
     <!-- End Date Column -->
     <ng-container matColumnDef="endDate">
-      <th mat-header-cell *matHeaderCellDef> End Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.endDate | date}} </td>
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.endDate | date }}</td>
     </ng-container>
 
-        <!-- Action Column -->
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef>   </th>
-            <td mat-cell *matCellDef="let element">
-            <button mat-flat-button color="accent" (click)='updateCourse(element)'>Edit</button>   
-            <span class='mx-2'></span> 
-            <button mat-flat-button color="warn" [disabled]="dataSource.length == 0" (click)='deleteCourseById(element.id)'>Delete</button>    
-            
-            </td>
-          </ng-container>
-  
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-flat-button color="accent" (click)="updateCourse(element)">
+          Edit
+        </button>
+        <span class="mx-2"></span>
+        <button
+          mat-flat-button
+          color="warn"
+          [disabled]="dataSource.length == 0"
+          (click)="deleteCourseById(element.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-</table>
-
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
